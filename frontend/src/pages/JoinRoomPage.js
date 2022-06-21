@@ -16,7 +16,6 @@ const JoinRoomPage = () => {
     // const [guestCanPause, setGuestCanPause] = useState(true);
     // const [votesToSkip, setVotesToSkip] = useState(defaultVotes);
 
-    // State object
     const [state, setState] = useState({
         guestCanPause: true,
         votesToSkip: defaultVotes,
@@ -43,8 +42,21 @@ const JoinRoomPage = () => {
         // setGuestCanPause(e.target.value);
     }
 
-    const handleCreateButtonClick = () => {
-        console.log(state);
+    const handleCreateButtonClick = async () => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                votes_to_skip: state.votesToSkip,
+                guest_can_pause: state.guestCanPause,
+            })
+        };
+
+        await fetch('/api/create-room', requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            console.log("SUCCESS", data);
+        });
     }
 
     return (
