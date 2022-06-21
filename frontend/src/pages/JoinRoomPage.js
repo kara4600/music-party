@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -13,6 +13,40 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 const JoinRoomPage = () => {
     let defaultVotes = 2;
 
+    // const [guestCanPause, setGuestCanPause] = useState(true);
+    // const [votesToSkip, setVotesToSkip] = useState(defaultVotes);
+
+    // State object
+    const [state, setState] = useState({
+        guestCanPause: true,
+        votesToSkip: defaultVotes,
+    })
+
+    useEffect(() => {
+        console.log(state.guestCanPause);
+        console.log(state.votesToSkip);
+    })
+
+    const handleVotesChange = e => {
+        setState({
+            ...state,
+            votesToSkip: e.target.value,
+        });
+        // setVotesToSkip(e.target.value);
+    }
+
+    const handleGuestCanPauseChange = e => {
+        setState({
+            ...state,
+            guestCanPause: e.target.value,
+        });
+        // setGuestCanPause(e.target.value);
+    }
+
+    const handleCreateButtonClick = () => {
+        console.log(state);
+    }
+
     return (
         <Grid container spacing={1}>
             <Grid item xs={12} align="center">
@@ -20,18 +54,21 @@ const JoinRoomPage = () => {
                     Create a room
                 </Typography>
             </Grid>
+
             <Grid item xs={12} align="center">
                 <FormControl component="fieldset">
                     <FormHelperText>
                         <div align="center">Guest Control Playback State</div>
                     </FormHelperText>
-                    <RadioGroup row defaultValue="true">
+
+                    <RadioGroup row defaultValue="true" onClick={handleGuestCanPauseChange}>
                         <FormControlLabel 
                             value="true" 
                             control={<Radio color="primary" />}
                             label="Play/Pause"
                             labelPlacement="bottom"
                         />
+
                         <FormControlLabel 
                             value="false" 
                             control={<Radio color="secondary" />}
@@ -41,6 +78,7 @@ const JoinRoomPage = () => {
                     </RadioGroup>
                 </FormControl>
             </Grid>
+
             <Grid item xs={12} align="center">
                 <FormControl>
                     <TextField 
@@ -51,7 +89,9 @@ const JoinRoomPage = () => {
                             min: 1,
                             style: {textAlign: "center"},
                         }}
+                        onChange={handleVotesChange}
                     />
+
                     <FormHelperText>
                         <div align="center">
                             Votes required to skip song
@@ -59,11 +99,17 @@ const JoinRoomPage = () => {
                     </FormHelperText>
                 </FormControl>
             </Grid>
+
             <Grid item xs={12} align="center">
-                <Button color="primary" variant="contained">
+                <Button 
+                    color="primary" 
+                    variant="contained"
+                    onClick={handleCreateButtonClick}
+                >
                     Create A Room
                 </Button>
             </Grid>
+
             <Grid item xs={12} align="center">
                 <Button color="secondary" variant="contained" to="/" component={Link}>
                     Back
