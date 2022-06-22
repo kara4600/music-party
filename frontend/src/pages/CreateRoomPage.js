@@ -10,7 +10,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
-const JoinRoomPage = () => {
+const CreateRoomPage = () => {
     let defaultVotes = 2;
 
     // const [guestCanPause, setGuestCanPause] = useState(true);
@@ -131,4 +131,4 @@ const JoinRoomPage = () => {
     );
 }
 
-export default JoinRoomPage;
+export default CreateRoomPage;
