@@ -7,6 +7,8 @@
     "react/function-component-definition": "off",
     "arrow-body-style": ["error", "always"],
     "no-console": "warn",
-    "prefer-const": "warn"
-  }
+    "prefer-const": "warn",
+    "camelcase": "off"
+  },
+  "ignorePatterns": ["main.js"]
 }
