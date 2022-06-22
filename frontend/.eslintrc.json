@@ -6,6 +6,7 @@
     "react/jsx-filename-extension": "off",
     "react/function-component-definition": "off",
     "arrow-body-style": ["error", "always"],
-    "no-console": "off"
+    "no-console": "warn",
+    "prefer-const": "warn"
   }
 }
