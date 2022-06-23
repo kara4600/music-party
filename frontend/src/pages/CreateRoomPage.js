@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -12,6 +12,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 const CreateRoomPage = () => {
   const defaultVotes = 2;
+  const navigate = useNavigate();
 
   // const [guestCanPause, setGuestCanPause] = useState(true);
   // const [votesToSkip, setVotesToSkip] = useState(defaultVotes);
@@ -58,6 +59,7 @@ const CreateRoomPage = () => {
       })
       .then((data) => {
         console.log('SUCCESS', data);
+        navigate(`/room/${data.code}`);
       });
   };
 
