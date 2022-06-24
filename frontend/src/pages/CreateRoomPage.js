@@ -22,10 +22,7 @@ const CreateRoomPage = () => {
     votesToSkip: defaultVotes,
   });
 
-  useEffect(() => {
-    console.log(state.guestCanPause);
-    console.log(state.votesToSkip);
-  });
+  useEffect(() => {});
 
   const handleVotesChange = (e) => {
     setState({
@@ -59,7 +56,7 @@ const CreateRoomPage = () => {
       })
       .then((data) => {
         console.log('SUCCESS', data);
-        navigate(`/room/${data.code}`);
+        navigate(`/room/${data.code}/`);
       });
   };
 
