@@ -14,9 +14,6 @@ const CreateRoomPage = () => {
   const defaultVotes = 2;
   const navigate = useNavigate();
 
-  // const [guestCanPause, setGuestCanPause] = useState(true);
-  // const [votesToSkip, setVotesToSkip] = useState(defaultVotes);
-
   const [state, setState] = useState({
     guestCanPause: true,
     votesToSkip: defaultVotes,
@@ -29,7 +26,6 @@ const CreateRoomPage = () => {
       ...state,
       votesToSkip: e.target.value,
     });
-    // setVotesToSkip(e.target.value);
   };
 
   const handleGuestCanPauseChange = (e) => {
@@ -37,7 +33,6 @@ const CreateRoomPage = () => {
       ...state,
       guestCanPause: e.target.value,
     });
-    // setGuestCanPause(e.target.value);
   };
 
   const handleCreateButtonClick = async () => {
@@ -55,7 +50,6 @@ const CreateRoomPage = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('SUCCESS', data);
         navigate(`/room/${data.code}/`);
       });
   };
