@@ -13,7 +13,7 @@ const RoomPage = () => {
     roomCode: code,
   });
 
-  let getRoomInfo = async () => {
+  const getRoomInfo = async () => {
     await fetch(`/api/get-room?code=${state.roomCode}`)
       .then((response) => {
         return response.json();
