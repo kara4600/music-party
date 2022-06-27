@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const SearchBar = (props) => {
   const [searchTerm, setSearchTerm] = React.useState('');
+  const { prompt } = props;
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -10,7 +11,7 @@ const SearchBar = (props) => {
 
   return (
     <div>
-      <label htmlFor="search">Search: </label>
+      <label htmlFor="search">Search for a {prompt}: </label>
       <input id="search" type="text" onChange={handleChange} />
     </div>
   );
