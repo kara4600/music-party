@@ -30,7 +30,7 @@ const RoomPage = () => {
 
   useEffect(() => {
     getRoomInfo();
-  }, [state]);
+  }, [state.guestCanPause, state.votesToSkip]);
 
   return (
     <div>
